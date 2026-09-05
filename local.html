@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Florianópolis</title>
+  <meta name="description" content="WDD131-PT.001 - Fundamentos da Web Dinâmica: Página do País ou Local">
+  <meta name="author" content="Paulo Fagundes">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Great+Vibes&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="estilos/local.css">
+  <script defer src="scripts/local.js"></script>
+  <!--<script src="scripts/obterdatas.js" defer></script>-->
+</head>
+
+<body>
+
+  <header>
+    <h1>Brasil- Santa Catarina</h1>
+  </header>
+  <aside></aside>
+  <main>
+    <picture>
+      <source media="(min-width: 800px)" srcset="imagens/floripa-larga.webp">
+      <source media="(min-width: 450px)" srcset="imagens/floripa-media.webp">
+      <img alt="Santa Catarina" src="imagens/floripa-pequena.webp" width="320" height="480" loading="lazy">
+    </picture>
+
+    <section class="card info">
+        <h2>Dados</h2>
+        <div class="col-2">
+            <span class="label">Área:</span><span class="value">95.730,68 km²</span>
+            <span class="label">População:</span><span class="value">7.610.361 habitantes (Censo 2022)</span>
+            <span class="label">Capital:</span><span class="value">Florianópolis</span>
+            <span class="label">Idiomas:</span><span class="value">Português</span>
+            <span class="label">Moeda:</span><span class="value">Real (R$)</span>
+            <span class="label">Fuso Horário:</span><span class="value">UTC-3 (Horário de Brasília)</span>
+            <span class="label">Código de Chamada:</span><span class="value">+55 (DDD 47, 48, 49)</span>
+            <span class="label">Domínio de Internet:</span><span class="value">.br (ou .sc.gov.br)</span>
+        </div>
+    </section>
+
+    <section class="card weather">
+      <h2>Clima</h2>
+        <svg class="weather-icon-mobile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" fill="#e0a905">
+          <path d="M19.36 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.64-4.96z"/>
+        </svg>
+      <div class="col-2">
+        <span class="label">Temperatura:</span>
+        <span class="value" id="temp-val">10 °C</span>
+
+        <span class="label">Condições:</span>
+        <span class="value">Parcialmente Nublado</span>
+
+        <span class="label">Vento:</span>
+        <span class="value" id="wind-val">5 km/h</span>
+
+        <span class="label">Sensação Térmica:</span>
+        <!-- O valor será calculado e inserido dinamicamente pelo JS -->
+        <span class="value" id="wcf"></span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="ano-atual"></span> (❖): Paulo Fagundes (❖): Xaxim, Santa Catarina, Brasil</p>
+    <p>Última modificação: <span id="ultima-modificacao"></span></p>
+  </footer>
+
+</body>
+
+</html>

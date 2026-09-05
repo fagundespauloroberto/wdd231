@@ -1,0 +1,29 @@
+@media (min-width: 680px) {
+    #hamburger-btn {
+        display: none;
+    }
+
+    #primary-nav {
+        display: flex !important;
+        width: auto;
+    }
+
+    #primary-nav ul {
+        display: flex;
+        margin-top: 0;
+    }
+
+    #primary-nav a {
+        background-color: transparent;
+        border-top: none;
+        padding: 0.5rem 1rem;
+    }
+
+    .grid-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+}

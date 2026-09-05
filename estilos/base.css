@@ -1,0 +1,277 @@
+/************************************************************************
+   1. RESET E ESTILOS BASE
+************************************************************************/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e8ece9;
+    color: #000;
+    line-height: 1.5;
+}
+
+header, main, footer {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+/************************************************************************
+   2. HEADER & NAVEGAÇÃO
+************************************************************************/
+header {
+    border-bottom: 2px solid #000;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    background-color: #ffffff;
+}
+
+.logo-placeholder {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.logo-placeholder::before,
+.logo-placeholder::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+}
+
+.logo-placeholder::before { transform: rotate(45deg); }
+.logo-placeholder::after { transform: rotate(-45deg); }
+
+#course-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 1rem;
+    flex-grow: 1;
+}
+
+#menu-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: 1px solid #000;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+}
+
+nav {
+    display: none; /* Oculto por padrão no Mobile */
+    flex-direction: column;
+    background-color: #222222;
+}
+
+nav.open {
+    display: flex;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    font-weight: 700;
+    border-bottom: 1px solid #333333;
+}
+
+nav a.active {
+    background-color: #444444;
+}
+
+/************************************************************************
+   3. LAYOUT PRINCIPAL & CARDS
+************************************************************************/
+main {
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.grid-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+}
+
+.card {
+    background-color: #d9d9d9;
+    border: 1px solid #777777;
+}
+
+.card h2 {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+/* Imagem de perfil no card Foto */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid #999999;
+}
+
+/************************************************************************
+   4. SEÇÃO DE CURSOS, FILTROS E REDES SOCIAIS
+************************************************************************/
+.cursos-card {
+    grid-column: 1 / -1;
+}
+
+.filter-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.btn-filter {
+    background-color: #d0d0d0;
+    border: 1px solid #666666;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-filter.active {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.8rem;
+    padding: 0.5rem 1rem;
+}
+
+.course-badge {
+    background-color: #dcdcdc;
+    border: 1px solid #888888;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0.6rem;
+    font-weight: 700;
+}
+
+.course-badge.completed {
+    background-color: #b0c4de;
+}
+
+.credits-info {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+/* Ícones Sociais */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.social-svg {
+    width: 38px;
+    height: 38px;
+    color: #000000;
+}
+
+/************************************************************************
+   5. RODAPÉ (FOOTER)
+************************************************************************/
+footer {
+    background-color: #b5b5b5;
+    text-align: center;
+    padding: 1.2rem 1rem;
+    border-top: 1px solid #888888;
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin-bottom: 0.3rem;
+}
+
+/************************************************************************
+   6. RESPONSIVIDADE (DESKTOP GRID)
+************************************************************************/
+@media (min-width: 650px) {
+    #menu-toggle {
+        display: none; /* Esconde botão hambúrguer */
+    }
+
+    nav {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: flex-start;
+        background-color: #1c1c1c;
+    }
+
+    nav a {
+        border-bottom: none;
+        border-right: 1px solid #333333;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .grid-main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cursos-card {
+        grid-column: 1 / 3;
+    }
+}
+
+.course-badge {
+    background-color: #dcdcdc;
+    border: 1px solid #888888;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+/* Cursos concluídos ficam com um destaque escuro/diferenciado estilo Wireframe */
+.course-badge.completed {
+    background-color: #929292;
+    color: #ffffff;
+}
