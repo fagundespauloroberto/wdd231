@@ -64,9 +64,11 @@ header {
     text-align: center;
     background-color: #132743;
     border-top: 1px solid #2c4d75;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#primary-nav a:hover, #primary-nav a.active {
+#primary-nav a:hover, 
+#primary-nav a.active {
     background-color: #e2a019;
     color: #000000;
 }
@@ -132,9 +134,11 @@ h1 {
     font-weight: 700;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-filter.active {
+.btn-filter.active,
+.btn-filter:hover {
     background-color: #1b365d;
     color: #ffffff;
 }
@@ -187,4 +191,10 @@ footer {
     width: 28px;
     height: 28px;
     color: #ffffff;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-links a:hover .social-icon {
+    color: #e2a019;
+    transform: scale(1.1);
 }
