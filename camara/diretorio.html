@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretório de Membros - Câmara de Comércio | Paulo Fagundes</title>
+    <meta name="description" content="Diretório de empresas e membros da Câmara de Comércio local. Encontre negócios, parceiros e serviços na região.">
+    <meta name="author" content="Paulo Fagundes">
+
+    <!-- 1. Ícone do Site (Favicon) -->
+    <link rel="icon" href="../imagens/familia.ico" type="image/x-icon">
+
+    <!-- Meta Tags do Open Graph (Facebook / WhatsApp / LinkedIn) -->
+    <meta property="og:title" content="Diretório de Membros - Câmara de Comércio">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
+    <meta property="og:url" content="https://fagundespauloroberto.github.io/wdd231/camara/diretorio.html">
+    <meta property="og:description" content="Conheça as empresas associadas à nossa Câmara de Comércio e impulsione seus negócios regionais.">
+
+    <!-- Tags do Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Diretório de Membros - Câmara de Comércio">
+    <meta name="twitter:description" content="Conheça as empresas associadas à nossa Câmara de Comércio e impulsione seus negócios regionais.">
+    <meta name="twitter:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="../estilos/normalize.css">
+    <link rel="stylesheet" href="estilos/base.css">
+
+    <!-- Fontes Google API -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Scripts JS com atributo defer -->
+    <script src="scripts/diretorio.js" defer></script>
+    <script src="scripts/membros.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="imagens/logo.png" alt="Logo da Câmara de Comércio" class="logo">
+            <div class="header-title">
+                <h1>Câmara de Comércio</h1>
+                <p>Unindo empresas, fortalecendo a região</p>
+            </div>
+        </div>
+        <button id="hamburger-btn" aria-label="Abrir Menu de Navegação"><span>&#9776;</span><span>&times;</span></button>
+        <nav id="primary-nav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="diretorio.html" class="active">Diretório</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Junte-se a Nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="directory-header">
+            <h2>Diretório de Membros</h2>
+            <div class="view-toggle">
+                <button id="grid-view-btn" class="active-view" aria-label="Visualização em Grade">🔲 Grade</button>
+                <button id="list-view-btn" aria-label="Visualização em Lista">☰ Lista</button>
+            </div>
+        </section>
+
+        <!-- Container onde as empresas serão renderizadas pelo JS -->
+        <div id="members-container" class="grid-view"></div>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <div class="footer-contact">
+                <h3>Câmara de Comércio</h3>
+                <p>Rua do Comércio, 100 - Centro</p>
+                <p>Telefone: (49) 3333-4444</p>
+                <p>Email: contato@camaracomercio.org.br</p>
+            </div>
+            <div class="footer-dev">
+                <p>&copy; <span id="current-year"></span> Câmara de Comércio</p>
+                <p>Paulo Fagundes | WDD 231</p>
+                <p id="last-modified"></p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

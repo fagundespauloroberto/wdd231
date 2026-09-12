@@ -1,0 +1,65 @@
+[
+  {
+    "nome": "Rafitec Embalagens",
+    "endereco": "Rua Valdir Luiz Di Domenico, 300 - Industrial, Xaxim - SC",
+    "telefone": "(49) 3353-8000",
+    "site": "https://www.rafitec.com.br",
+    "imagem": "rafitec.webp",
+    "nivelAtuacao": 3,
+    "descricao": "Indústria e fabricação de embalagens de ráfia e tecidos sintéticos."
+  },
+  {
+    "nome": "Supermercado Santa Marta",
+    "endereco": "Av. Plínio Arlindo de Nês, 1000 - Centro, Xaxim - SC",
+    "telefone": "(49) 3353-1234",
+    "site": "https://www.super-santamarta.com.br",
+    "imagem": "santa-marta.webp",
+    "nivelAtuacao": 2,
+    "descricao": "Rede local de supermercados com variedade e produtos da região."
+  },
+  {
+    "nome": "Aurora Coop Xaxim",
+    "endereco": "BR-282, Km 518 - Distrito Industrial, Xaxim - SC",
+    "telefone": "(49) 3353-9000",
+    "site": "https://www.aurora.coop.br",
+    "imagem": "aurora.webp",
+    "nivelAtuacao": 3,
+    "descricao": "Unidade industrial de processamento de alimentos e proteína animal."
+  },
+  {
+    "nome": "Auto Posto D'Agostini",
+    "endereco": "Av. Luiz Lunardi, 450 - Centro, Xaxim - SC",
+    "telefone": "(49) 3353-2211",
+    "site": "https://www.postodagostini.com.br",
+    "imagem": "posto-dagostini.webp",
+    "nivelAtuacao": 1,
+    "descricao": "Posto de combustíveis, serviços automotivos e loja de conveniência."
+  },
+  {
+    "nome": "Farmácia São Rafael",
+    "endereco": "Rua André Lópes, 215 - Centro, Xaxim - SC",
+    "telefone": "(49) 3353-5544",
+    "site": "https://www.saorafael.com.br",
+    "imagem": "sao-rafael.webp",
+    "nivelAtuacao": 2,
+    "descricao": "Medicamentos, perfumaria e atendimento farmacêutico especializado."
+  },
+  {
+    "nome": "Sicoob Credimoc Xaxim",
+    "endereco": "Rua 10 de Novembro, 320 - Centro, Xaxim - SC",
+    "telefone": "(49) 3353-3300",
+    "site": "https://www.sicoob.com.br",
+    "imagem": "sicoob.webp",
+    "nivelAtuacao": 3,
+    "descricao": "Cooperativa de crédito com soluções financeiras para empresas locais."
+  },
+  {
+    "nome": "Marmoraria Xaxim",
+    "endereco": "Rua Giacomo Lunardi, 88 - Vila Frei Damião, Xaxim - SC",
+    "telefone": "(49) 3353-7788",
+    "site": "https://www.marmorariaxaxim.com.br",
+    "imagem": "marmoraria.webp",
+    "nivelAtuacao": 1,
+    "descricao": "Cortes e acabamentos em mármores, granitos e pedras decorativas."
+  }
+]
