@@ -254,6 +254,31 @@ footer {
   color: var(--accent-color);
 }
 
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.social-links a {
+    color: inherit;
+    display: inline-flex;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.social-icon {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
 /* Responsividade Desktop */
 @media (min-width: 768px) {
   header {
