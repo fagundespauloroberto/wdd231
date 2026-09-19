@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Configurações do OpenWeatherMap
-    const apiKey = 'aec60799ec6fb1768a1d7fbae2b57a34'; //chave aqui, passamos por parametro
+    // passando os dados por parametro para o OpenWeatherMap
+    const apiKey = 'aec60799ec6fb1768a1d7fbae2b57a34';
     const lat = '-26.96'; 
     const lon = '-52.53'; 
     
@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayCurrentWeather(data) {
         const currentWeatherEl = document.getElementById('current-weather');
+        if (!currentWeatherEl) return;
+
         const iconCode = data.weather[0].icon;
         const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
         const temp = Math.round(data.main.temp);
@@ -47,9 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayForecast(data) {
         const forecastEl = document.getElementById('forecast');
+        if (!forecastEl) return;
         forecastEl.innerHTML = '';
 
-        //filtro da lista para pegar um horário fixo por dia (ex: 12:00) para os próximos 3 dias
+        //pegar horário fixo por dia (12:00) para os próximos 3 dias
         const dailyForecasts = data.list.filter(item => item.dt_txt.includes('12:00:00')).slice(0, 3);
 
         dailyForecasts.forEach(item => {
@@ -67,24 +70,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const membersUrl = 'dados/membros.json';
+    const levelNames = {
+        1: 'Membro',
+        2: 'Prata',
+        3: 'Ouro'
+    };
 
     async function fetchSpotlights() {
         try {
-            const response = await fetch(membersUrl);
+            const response = await fetch('./dados/membros.json');
             if (!response.ok) throw new Error('Erro ao carregar membros');
             const members = await response.json();
 
-            // membros nível 2 (Prata) e 3 (Ouro)
-            const qualifiedMembers = members.filter(m => m.nivel === 2 || m.nivel === 3);
+        //membros de nível Prata (2) e Ouro (3)
+            const qualifiedMembers = members.filter(m => m.nivelAtuacao === 2 || m.nivelAtuacao === 3);
 
-            //sorteia aleatoriamente entre 2 e 3 membros
+        //embaralha a lista filtrada
             const shuffled = qualifiedMembers.sort(() => 0.5 - Math.random());
+
+        //selec até 3 membros
             const selected = shuffled.slice(0, 3);
 
             displaySpotlights(selected);
         } catch (error) {
-            console.error('Erro ao carregar destaques:', error);
+            console.error('Erro ao carregar os destaques:', error);
+            const container = document.getElementById('spotlight-cards');
+            if (container) {
+                container.innerHTML = '<p>Erro ao carregar os membros em destaque.</p>';
+            }
         }
     }
 
@@ -93,19 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
         container.innerHTML = '';
 
-        const levelText = { 2: 'Membro Prata', 3: 'Membro Ouro' };
-
         spotlights.forEach(member => {
-            const card = document.createElement('div');
+            const card = document.createElement('article');
             card.className = 'spotlight-card';
 
+            // Trata a URL do campo 'site'
+            const rawWeb = member.site || '#';
+            const cleanWeb = rawWeb.replace(/^https?:\/\//, '').split('/')[0]; // Exibe apenas o domínio limpo
+
             card.innerHTML = `
-                <span class="badge level-${member.nivel}">${levelText[member.nivel]}</span>
-                <img src="imagens/${member.imagem}" alt="Logo ${member.nome}" loading="lazy">
-                <h3>${member.nome}</h3>
-                <p><strong>Telefone:</strong> ${member.telefone}</p>
-                <p><strong>Endereço:</strong> ${member.endereco}</p>
-                <p><a href="${member.website}" target="_blank" rel="noopener">Acessar Website</a></p>
+                <div class="spotlight-header">
+                    <h3>${member.nome}</h3>
+                    <p class="tagline">${member.descricao || 'Empresa Associada'}</p>
+                </div>
+                <hr>
+                <div class="spotlight-body">
+                    <img src="imagens/${member.imagem}" alt="Logo de ${member.nome}" loading="lazy">
+                    <div class="spotlight-details">
+                        <p><strong>NÍVEL:</strong> <span class="badge level-${member.nivelAtuacao}">${levelNames[member.nivelAtuacao]}</span></p>
+                        <p><strong>ENDEREÇO:</strong> ${member.endereco}</p>
+                        <p><strong>TELEFONE:</strong> ${member.telefone}</p>
+                        <p><strong>SITE:</strong> <a href="${rawWeb}" target="_blank" rel="noopener">${cleanWeb}</a></p>
+                    </div>
+                </div>
             `;
             container.appendChild(card);
         });

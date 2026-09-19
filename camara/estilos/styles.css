@@ -416,3 +416,84 @@ footer {
     grid-column: 1 / -1;
   }
 }
+
+/* Container dos Destaques */
+.spotlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Cartão Individual */
+.spotlight-card {
+  background-color: var(--card-bg, #e2e8f0);
+  border: 1px solid #cbd5e1;
+  padding: 1.25rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.spotlight-header {
+  text-align: center;
+}
+
+.spotlight-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #1e293b;
+}
+
+.spotlight-header .tagline {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+}
+
+.spotlight-card hr {
+  border: 0;
+  border-top: 1px solid #94a3b8;
+  margin: 0.75rem 0 1rem 0;
+}
+
+/* Corpo do Cartão (Logo + Informações) */
+.spotlight-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spotlight-body img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 0.25rem;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.spotlight-details {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.spotlight-details p {
+  margin: 0.25rem 0;
+  word-break: break-word;
+}
+
+/* Badges de Nível (Ouro / Prata) */
+.badge.level-2 {
+  color: #475569;
+  font-weight: bold;
+}
+
+.badge.level-3 {
+  color: #b45309;
+  font-weight: bold;
+}
