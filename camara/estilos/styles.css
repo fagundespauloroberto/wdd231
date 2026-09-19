@@ -1,4 +1,6 @@
-/* Atualização da Fonte Principal e Esquema de Cores */
+/***************************************
+  Fonte Principal e Esquema de Cores
+***************************************/
 :root {
   --primary-color: #1a365d;
   --secondary-color: #2b6cb0;
@@ -15,7 +17,7 @@
 }
 
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Atualizado para usar a Roboto carregada via Google Fonts */
+  font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
@@ -23,7 +25,9 @@ body {
   line-height: 1.6;
 }
 
-/* Header & Nav */
+/*********************************************
+   Header & Nav
+*********************************/
 header {
   background-color: var(--primary-color);
   color: white;
@@ -58,7 +62,9 @@ header {
   color: #cbd5e0;
 }
 
-/* Menu Hambúrguer (Mobile) */
+/************************* 
+Menu Hambúrguer (Mobile) 
+*******************************/
 #hamburger-btn {
   background: none;
   border: none;
@@ -106,11 +112,14 @@ nav a {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-nav a:hover, nav a.active {
+nav a:hover, 
+nav a.active {
   background-color: var(--secondary-color);
 }
 
-/* Conteúdo Principal */
+/***************************************
+   Conteúdo Principal & Diretório
+ ****************************************/
 main {
   max-width: 1100px;
   margin: 1.5rem auto;
@@ -147,7 +156,9 @@ main {
   border-color: var(--secondary-color);
 }
 
-/* Visualização em Grade (Grid View) */
+/********************************* 
+Visualização em Grade
+**********************************/
 .grid-view {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -193,11 +204,13 @@ main {
   text-transform: uppercase;
 }
 
-.level-1 { background-color: #e2e8f0; color: #4a5568; } /* Membro */
-.level-2 { background-color: #e2e8f0; color: #2d3748; border: 1px solid #cbd5e0; } /* Prata */
-.level-3 { background-color: #fefcbf; color: #744210; border: 1px solid #faf089; } /* Ouro */
+.level-1 { background-color: #e2e8f0; color: #4a5568; }
+.level-2 { background-color: #e2e8f0; color: #2d3748; border: 1px solid #cbd5e0; }
+.level-3 { background-color: #fefcbf; color: #744210; border: 1px solid #faf089; }
 
-/* Visualização em Lista (List View) */
+/*********************** 
+Visualização em Lista 
+*************************/
 .list-view {
   display: flex;
   flex-direction: column;
@@ -231,96 +244,15 @@ main {
   margin: 0;
 }
 
-/* Rodapé */
-footer {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 1.5rem 1rem;
-  margin-top: 3rem;
-  font-size: 0.9rem;
-}
-
-.footer-info {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.footer-contact h3 {
-  margin-top: 0;
-  color: var(--accent-color);
-}
-
-/* Responsividade Desktop */
-@media (min-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-  }
-
-  #hamburger-btn {
-    display: none;
-  }
-
-  nav {
-    display: block;
-    width: auto;
-  }
-
-  nav ul {
-    flex-direction: row;
-    gap: 0.5rem;
-  }
-
-  nav a {
-    border-top: none;
-    border-radius: 4px;
-  }
-
-  .footer-info {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
-}
-
-.social-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 0.5rem 0;
-}
-
-.social-links a {
-    color: inherit;
-    display: inline-flex;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.social-links a:hover {
-    color: #0056b3;
-    transform: translateY(-2px);
-}
-
-.social-icon {
-    width: 28px;
-    height: 28px;
-    fill: currentColor;
-}
-
-/* Layout Responsivo para a Home */
+/********************************************
+   Layout Responsivo para a Home & Hero
+********************************************/
 .home-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-/* Hero Image e CTA Overlay */
 .hero-container {
   position: relative;
   width: 100%;
@@ -368,7 +300,9 @@ footer {
   background-color: white;
 }
 
-/* Cards Gerais */
+/* **************************
+Cards Gerais e Clima 
+***********************************/
 .card {
   background-color: var(--card-bg);
   padding: 1.5rem;
@@ -396,37 +330,13 @@ footer {
   padding-top: 0.5rem;
 }
 
-/* Spotlights */
+/* **************************************************************
+   Seção de Destaques 
+*****************************************/
 .spotlight-container {
   grid-column: 1 / -1;
 }
 
-.spotlights-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.badge {
-  font-size: 0.7rem;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-/* Grid Layout para Telas Grandes (Desktop >= 768px) */
-@media (min-width: 768px) {
-  .home-grid {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  .hero-container {
-    grid-column: 1 / -1;
-  }
-}
-
-/* Container dos Destaques */
 .spotlights-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -434,12 +344,11 @@ footer {
   margin-top: 1rem;
 }
 
-/* Cartão Individual */
 .spotlight-card {
-  background-color: var(--card-bg, #e2e8f0);
-  border: 1px solid #cbd5e1;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   padding: 1.25rem;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -452,23 +361,22 @@ footer {
 .spotlight-header h3 {
   margin: 0;
   font-size: 1.15rem;
-  color: #1e293b;
+  color: var(--primary-color);
 }
 
 .spotlight-header .tagline {
   margin: 0.25rem 0 0 0;
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--light-text);
   font-style: italic;
 }
 
 .spotlight-card hr {
   border: 0;
-  border-top: 1px solid #94a3b8;
+  border-top: 1px solid var(--border-color);
   margin: 0.75rem 0 1rem 0;
 }
 
-/* Corpo do Cartão (Logo + Informações) */
 .spotlight-body {
   display: flex;
   align-items: center;
@@ -480,7 +388,7 @@ footer {
   height: 90px;
   object-fit: contain;
   background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--border-color);
   padding: 0.25rem;
   border-radius: 4px;
   flex-shrink: 0;
@@ -496,7 +404,14 @@ footer {
   word-break: break-word;
 }
 
-/* Badges de Nível (Ouro / Prata) */
+.badge {
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
 .badge.level-2 {
   color: #475569;
   font-weight: bold;
@@ -505,4 +420,98 @@ footer {
 .badge.level-3 {
   color: #b45309;
   font-weight: bold;
+}
+
+/* ****************************************
+   Rodapé & Ícones das Redes
+****************************************** */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+.footer-info {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.footer-contact h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.social-links a {
+  color: inherit;
+  display: inline-flex;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+  color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+/* ******************************************
+   Responsividade Desktop
+********************************** */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+
+  #hamburger-btn {
+    display: none;
+  }
+
+  nav {
+    display: block;
+    width: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    border-top: none;
+    border-radius: 4px;
+  }
+
+  .footer-info {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .home-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .hero-container {
+    grid-column: 1 / -1;
+  }
 }
