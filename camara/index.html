@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Câmara de Comércio | Paulo Fagundes</title>
+    <meta name="description" content="Página Inicial da Câmara de Comércio. Notícias, previsão do tempo, eventos locais e empresas em destaque.">
+    <meta name="author" content="Paulo Fagundes">
+
+    <!-- Ícone do Site (Favicon) -->
+    <link rel="icon" href="../imagens/familia.ico" type="image/x-icon">
+
+    <!-- Meta Tags do Open Graph -->
+    <meta property="og:title" content="Câmara de Comércio - Página Inicial">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
+    <meta property="og:url" content="https://fagundespauloroberto.github.io/wdd231/camara/index.html">
+    <meta property="og:description" content="Acompanhe eventos, tempo da região e empresas associadas na Câmara de Comércio.">
+
+    <!-- Tags do Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Câmara de Comércio - Página Inicial">
+    <meta name="twitter:description" content="Acompanhe eventos, tempo da região e empresas associadas na Câmara de Comércio.">
+    <meta name="twitter:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="../estilos/normalize.css">
+    <link rel="stylesheet" href="estilos/styles.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Scripts JS -->
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/home.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="imagens/logo.png" alt="Logo da Câmara de Comércio" class="logo">
+            <div class="header-title">
+                <h1>Câmara de Comércio</h1>
+                <p>Unindo empresas, fortalecendo a região</p>
+            </div>
+        </div>
+        <button id="hamburger-btn" aria-label="Abrir Menu de Navegação"><span>&#9776;</span><span>&times;</span></button>
+        <nav id="primary-nav">
+            <ul>
+                <!--<li><a href="../index.html" class="nav-profile">← Voltar ao Perfil WDD 231</a></li>-->
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="diretorio.html">Diretório</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Junte-se a Nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="home-grid">
+        <!-- Hero Image com Call To Action (CTA) -->
+        <section class="hero-container">
+            <img src="imagens/hero.jpg" alt="Visão aérea da cidade da Câmara de Comércio" class="hero-img">
+            <div class="cta-overlay">
+                <h2>Seja Membro da Nossa Câmara!</h2>
+                <p>Impulsione o seu negócio e faça conexões estratégicas na nossa região.</p>
+                <a href="#" class="cta-btn">Associe-se Agora</a>
+            </div>
+        </section>
+
+        <!-- seção de Eventos Atuais -->
+        <section class="card events-card">
+            <h2>Eventos Recentes & Futuros</h2>
+            <ul>
+                <li><strong>Feira de Negócios 2026:</strong> 25 de Outubro no Centro de Eventos.</li>
+                <li><strong>Workshop de Inovação:</strong> 10 de Novembro - Inscrições Abertas.</li>
+                <li><strong>Jantar de Encerramento Anual:</strong> 15 de Dezembro.</li>
+            </ul>
+        </section>
+
+        <!--Seção do Tempo (OpenWeatherMap) -->
+        <section class="card weather-card">
+            <h2>Clima Atual</h2>
+            <div id="current-weather">
+                <p>Carregando dados meteorológicos...</p>
+            </div>
+            <h3>Previsão para 3 Dias</h3>
+            <div id="forecast" class="forecast-container">
+                <p>Carregando previsão...</p>
+            </div>
+        </section>
+
+        <!--seção de Membros em Destaque (Spotlight) -->
+        <section class="spotlight-container">
+            <h2>Empresas em Destaque</h2>
+            <div id="spotlight-cards" class="spotlights-grid">
+                <!-- Cartões sorteados via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <div class="footer-contact">
+                <h3>Câmara de Comércio</h3>
+                <p>Rua do Comércio, 100 - Centro</p>
+                <p>Telefone: (49) 3333-4444</p>
+                <p>Email: contato@camaracomercio.org.br</p>
+            </div>
+            <div class="footer-dev">
+                <p>&copy; <span id="current-year"></span> Câmara de Comércio</p>
+                <p>Paulo Fagundes | WDD 231</p>
+                <p id="last-modified"></p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

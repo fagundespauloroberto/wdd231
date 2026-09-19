@@ -1,0 +1,418 @@
+/* Atualização da Fonte Principal e Esquema de Cores */
+:root {
+  --primary-color: #1a365d;
+  --secondary-color: #2b6cb0;
+  --accent-color: #d69e2e;
+  --bg-color: #f7fafc;
+  --card-bg: #ffffff;
+  --text-color: #2d3748;
+  --light-text: #718096;
+  --border-color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif; /* Atualizado para usar a Roboto carregada via Google Fonts */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Header & Nav */
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.header-title p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #cbd5e0;
+}
+
+/* Menu Hambúrguer (Mobile) */
+#hamburger-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+#hamburger-btn span:last-child {
+  display: none;
+}
+
+#hamburger-btn.open span:first-child {
+  display: none;
+}
+
+#hamburger-btn.open span:last-child {
+  display: inline;
+}
+
+nav {
+  width: 100%;
+  display: none;
+}
+
+nav.open {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a:hover, nav a.active {
+  background-color: var(--secondary-color);
+}
+
+/* Conteúdo Principal */
+main {
+  max-width: 1100px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.directory-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.directory-header h2 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.view-toggle button {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.view-toggle button.active-view {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+/* Visualização em Grade (Grid View) */
+.grid-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.member-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.member-card img {
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
+  margin: 0 auto 1rem auto;
+}
+
+.member-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--primary-color);
+}
+
+.member-card p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.member-level {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.level-1 { background-color: #e2e8f0; color: #4a5568; } /* Membro */
+.level-2 { background-color: #e2e8f0; color: #2d3748; border: 1px solid #cbd5e0; } /* Prata */
+.level-3 { background-color: #fefcbf; color: #744210; border: 1px solid #faf089; } /* Ouro */
+
+/* Visualização em Lista (List View) */
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.list-view .member-card {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+
+.list-view .member-card img {
+  display: none;
+}
+
+.list-view .member-card h3 {
+  font-size: 1rem;
+  margin: 0;
+  flex: 2;
+}
+
+.list-view .member-card p {
+  margin: 0;
+  flex: 2;
+}
+
+.list-view .member-level {
+  margin: 0;
+}
+
+/* Rodapé */
+footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1.5rem 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+.footer-info {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.footer-contact h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+/* Responsividade Desktop */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+
+  #hamburger-btn {
+    display: none;
+  }
+
+  nav {
+    display: block;
+    width: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    border-top: none;
+    border-radius: 4px;
+  }
+
+  .footer-info {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* Layout Responsivo para a Home */
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Hero Image e CTA Overlay */
+.hero-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  min-height: 250px;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.cta-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(26, 54, 93, 0.85);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.cta-overlay h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.cta-btn:hover {
+  background-color: white;
+}
+
+/* Cards Gerais */
+.card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weather-info .temp {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.5rem;
+}
+
+/* Spotlights */
+.spotlight-container {
+  grid-column: 1 / -1;
+}
+
+.spotlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.spotlight-card {
+  background-color: var(--card-bg);
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  position: relative;
+}
+
+.spotlight-card img {
+  max-width: 100px;
+  max-height: 60px;
+  object-fit: contain;
+  margin: 0.5rem 0;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Grid Layout para Telas Grandes (Desktop >= 768px) */
+@media (min-width: 768px) {
+  .home-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .hero-container {
+    grid-column: 1 / -1;
+  }
+}
