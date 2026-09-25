@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junte-se a Nós - Câmara de Comércio | Paulo Fagundes</title>
+    <meta name="description" content="Formulário de adesão para novos membros e empresas na Câmara de Comércio local.">
+    <meta name="author" content="Paulo Fagundes">
+
+    <link rel="icon" href="imagens/xaxim.ico" type="image/x-icon">
+
+    <meta property="og:title" content="Junte-se a Nós - Câmara de Comércio">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
+    <meta property="og:url" content="https://fagundespauloroberto.github.io/wdd231/camara/associacao.html">
+    <meta property="og:description" content="Associe sua empresa à nossa Câmara de Comércio e aproveite os benefícios exclusivos.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Junte-se a Nós - Câmara de Comércio">
+    <meta name="twitter:description" content="Associe sua empresa à nossa Câmara de Comércio e aproveite os benefícios exclusivos.">
+    <meta name="twitter:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
+
+    <link rel="stylesheet" href="../estilos/normalize.css">
+    <link rel="stylesheet" href="estilos/base.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/associacao.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <img src="imagens/logo.png" alt="Logo da Câmara de Comércio" class="logo">
+            <div class="header-title">
+                <h1>Câmara de Comércio</h1>
+                <p>Unindo empresas, fortalecendo a região</p>
+            </div>
+        </div>
+        <button id="hamburger-btn" aria-label="Abrir Menu de Navegação"><span>&#9776;</span><span>&times;</span></button>
+        <nav id="primary-nav">
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="diretorio.html">Diretório</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="associacao.html" class="active">Junte-se a Nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="join-main-grid">
+        <section class="form-container">
+            <h2>Formulário de Adesão</h2>
+            <p>Preencha os dados abaixo para se tornar um membro oficial da nossa Câmara de Comércio.</p>
+
+            <form method="get" action="agradecimento.html" id="join-form">
+                
+                <label title="Nome do candidato">
+                    <span>Nome:*</span>
+                    <input type="text" name="fname" id="fname" required autocomplete="given-name" title="Digite o seu primeiro nome">
+                </label>
+
+                <label title="Sobrenome do candidato">
+                    <span>Sobrenome:*</span>
+                    <input type="text" name="lname" id="lname" required autocomplete="family-name" title="Digite o seu sobrenome">
+                </label>
+
+                <label title="Cargo do candidato na organização">
+                    <span>Cargo na Organização:</span>
+                    <input type="text" name="title" id="title" autocomplete="organization-title" pattern="[A-Za-zÀ-ÿ\s\-]{7,}" title="Informe seu cargo (mínimo de 7 caracteres contendo apenas letras, hifens e espaços)">
+                </label>
+
+                <label title="Endereço de e-mail de contato">
+                    <span>E-mail:*</span>
+                    <input type="email" name="email" id="email" required autocomplete="email" placeholder="exemplo@dominio.com" title="Informe um e-mail válido">
+                </label>
+
+                <label title="Número de celular com DDD">
+                    <span>Celular:*</span>
+                    <input type="tel" name="phone" id="phone" required autocomplete="tel" title="Informe seu número de telefone com DDD">
+                </label>
+
+                <label title="Nome da empresa ou organização">
+                    <span>Nome da Empresa/Organização:*</span>
+                    <input type="text" name="organization" id="organization" required autocomplete="organization" title="Digite o nome da sua empresa">
+                </label>
+
+                <fieldset class="membership-selection">
+                    <legend>Nível de Associação:*</legend>
+                    
+                    <label class="radio-label" title="Associação Sem Fins Lucrativos - Gratuita">
+                        <input type="radio" name="membership-level" value="np" required>
+                        <span>Associação NP (Sem fins lucrativos - Gratuita)</span>
+                    </label>
+
+                    <label class="radio-label" title="Associação Nível Bronze">
+                        <input type="radio" name="membership-level" value="bronze">
+                        <span>Associação Bronze</span>
+                    </label>
+
+                    <label class="radio-label" title="Associação Nível Prata">
+                        <input type="radio" name="membership-level" value="silver">
+                        <span>Associação Prata</span>
+                    </label>
+
+                    <label class="radio-label" title="Associação Nível Ouro">
+                        <input type="radio" name="membership-level" value="gold">
+                        <span>Associação Ouro</span>
+                    </label>
+                </fieldset>
+
+                <label title="Descrição da atividade da sua organização">
+                    <span>Descrição da Atividade/Organização:</span>
+                    <textarea name="description" id="description" rows="4" title="Descreva brevemente a atuação da sua empresa"></textarea>
+                </label>
+
+                <input type="hidden" name="timestamp" id="timestamp">
+
+                <input type="submit" value="Enviar Candidatura" class="submit-btn">
+            </form>
+        </section>
+
+        <section class="cards-container">
+            <h2>Níveis de Associação</h2>
+            <div class="membership-cards">
+                
+                <article class="level-card animate-card">
+                    <h3>Associação NP</h3>
+                    <p class="price">Gratuito</p>
+                    <button type="button" class="info-btn" data-modal="modal-np">Mais Informações</button>
+                </article>
+
+                <article class="level-card animate-card">
+                    <h3>Associação Bronze</h3>
+                    <p class="price">R$ 150 / mês</p>
+                    <button type="button" class="info-btn" data-modal="modal-bronze">Mais Informações</button>
+                </article>
+
+                <article class="level-card animate-card">
+                    <h3>Associação Prata</h3>
+                    <p class="price">R$ 300 / mês</p>
+                    <button type="button" class="info-btn" data-modal="modal-silver">Mais Informações</button>
+                </article>
+
+                <article class="level-card animate-card">
+                    <h3>Associação Ouro</h3>
+                    <p class="price">R$ 500 / mês</p>
+                    <button type="button" class="info-btn" data-modal="modal-gold">Mais Informações</button>
+                </article>
+
+            </div>
+        </section>
+
+        <dialog id="modal-np" class="membership-dialog">
+            <div class="dialog-content">
+                <h3>Benefícios do Nível NP (Gratuito)</h3>
+                <ul>
+                    <li>Exclusivo para ONGs e entidades sem fins lucrativos.</li>
+                    <li>Listagem básica no Diretório de Membros.</li>
+                    <li>Acesso às reuniões gerais da comunidade.</li>
+                </ul>
+                <button type="button" class="close-modal">Fechar</button>
+            </div>
+        </dialog>
+
+        <dialog id="modal-bronze" class="membership-dialog">
+            <div class="dialog-content">
+                <h3>Benefícios do Nível Bronze</h3>
+                <ul>
+                    <li>Todos os benefícios do nível NP.</li>
+                    <li>Acesso a treinamentos e workshops com 10% de desconto.</li>
+                    <li>Acesso a eventos comunitários de networking.</li>
+                </ul>
+                <button type="button" class="close-modal">Fechar</button>
+            </div>
+        </dialog>
+
+        <dialog id="modal-silver" class="membership-dialog">
+            <div class="dialog-content">
+                <h3>Benefícios do Nível Prata</h3>
+                <ul>
+                    <li>Todos os benefícios do Nível Bronze.</li>
+                    <li>20% de desconto em eventos e workshops.</li>
+                    <li>Inclusão na rotação de Empresas em Destaque na Página Inicial.</li>
+                    <li>Publicidade e menções nas redes sociais da Câmara.</li>
+                </ul>
+                <button type="button" class="close-modal">Fechar</button>
+            </div>
+        </dialog>
+
+        <dialog id="modal-gold" class="membership-dialog">
+            <div class="dialog-content">
+                <h3>Benefícios do Nível Ouro</h3>
+                <ul>
+                    <li>Todos os benefícios dos níveis anteriores.</li>
+                    <li>Prioridade máxima na área de Destaque da Página Inicial.</li>
+                    <li>Desconto de 50% em todos os eventos e treinamentos.</li>
+                    <li>Estande exclusivo em feiras e exposições promovidas pela Câmara.</li>
+                    <li>Acesso direto ao conselho diretivo e reuniões estratégicas.</li>
+                </ul>
+                <button type="button" class="close-modal">Fechar</button>
+            </div>
+        </dialog>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <div class="footer-contact">
+                <h3>Câmara de Comércio</h3>
+                <p>Rua do Comércio, 101 - Centro</p>
+                <p>Telefone: (49) 3333-4444</p>
+                <p>Email: contato@camaracomercio.org.br</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/paulofagundes" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                    </svg>
+                </a>
+            </div>            
+            <div class="footer-dev">
+                <p>&copy; <span id="current-year"></span> Câmara de Comércio</p>
+                <p>Paulo Fagundes | WDD 231</p>
+                <p id="last-modified"></p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

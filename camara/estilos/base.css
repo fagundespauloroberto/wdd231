@@ -15,18 +15,33 @@
 }
 
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Atualizado para usar a Roboto carregada via Google Fonts */
+  font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  
+  /* Mantém o rodapé fixado na parte inferior em telas com pouco conteúdo */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Header & Nav */
+main {
+  max-width: 1100px;
+  width: 100%;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  flex: 1; /* Ocupa o espaço disponível empurrando o footer */
+}
+
+/* ==========================================================================
+   2. Cabeçalho & Navegação (Header & Nav)
+   ========================================================================== */
 header {
   background-color: var(--primary-color);
-  color: white;
+  color: #ffffff;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -58,11 +73,11 @@ header {
   color: #cbd5e0;
 }
 
-/* Menu Hambúrguer (Mobile) */
+/* Botão Menu Hambúrguer (Mobile) */
 #hamburger-btn {
   background: none;
   border: none;
-  color: white;
+  color: #ffffff;
   font-size: 2rem;
   cursor: pointer;
   align-self: flex-end;
@@ -99,24 +114,21 @@ nav ul {
 
 nav a {
   display: block;
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   padding: 0.75rem 1rem;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-nav a:hover, nav a.active {
+nav a:hover, 
+nav a.active {
   background-color: var(--secondary-color);
 }
 
-/* Conteúdo Principal */
-main {
-  max-width: 1100px;
-  margin: 1.5rem auto;
-  padding: 0 1rem;
-}
-
+/* ==========================================================================
+   3. Diretório de Membros e Destaques (diretorio.html / index.html)
+   ========================================================================== */
 .directory-header {
   display: flex;
   justify-content: space-between;
@@ -132,28 +144,45 @@ main {
 }
 
 .view-toggle button {
-  background-color: white;
+  background-color: #ffffff;
   border: 1px solid var(--border-color);
   padding: 0.5rem 1rem;
   cursor: pointer;
   font-weight: bold;
   border-radius: 4px;
   font-family: inherit;
+  transition: all 0.2s ease;
 }
 
 .view-toggle button.active-view {
   background-color: var(--secondary-color);
-  color: white;
+  color: #ffffff;
   border-color: var(--secondary-color);
 }
 
-/* Visualização em Grade (Grid View) */
-.grid-view {
+/* Estrutura de Grade Responsiva */
+#members-container.grid-view,
+.spotlights-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
+@media (min-width: 600px) {
+  #members-container.grid-view,
+  .spotlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  #members-container.grid-view,
+  .spotlights-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Estilo do Cartão em Grade */
 .member-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -164,6 +193,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .member-card img {
@@ -193,18 +223,18 @@ main {
   text-transform: uppercase;
 }
 
-.level-1 { background-color: #e2e8f0; color: #4a5568; } /* Membro */
-.level-2 { background-color: #e2e8f0; color: #2d3748; border: 1px solid #cbd5e0; } /* Prata */
-.level-3 { background-color: #fefcbf; color: #744210; border: 1px solid #faf089; } /* Ouro */
+.level-1 { background-color: #e2e8f0; color: #4a5568; } 
+.level-2 { background-color: #e2e8f0; color: #2d3748; border: 1px solid #cbd5e0; } 
+.level-3 { background-color: #fefcbf; color: #744210; border: 1px solid #faf089; } 
 
 /* Visualização em Lista (List View) */
-.list-view {
+#members-container.list-view {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
-.list-view .member-card {
+#members-container.list-view .member-card {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -212,29 +242,278 @@ main {
   padding: 0.75rem 1rem;
 }
 
-.list-view .member-card img {
+#members-container.list-view .member-card img {
   display: none;
 }
 
-.list-view .member-card h3 {
+#members-container.list-view .member-card h3 {
   font-size: 1rem;
   margin: 0;
   flex: 2;
 }
 
-.list-view .member-card p {
+#members-container.list-view .member-card p {
   margin: 0;
   flex: 2;
 }
 
-.list-view .member-level {
+#members-container.list-view .member-level {
   margin: 0;
 }
 
-/* Rodapé */
+/* ==========================================================================
+   4. Página de Associação / Formulário (associacao.html)
+   ========================================================================== */
+.join-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .join-main-grid {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+.form-container h2, 
+.cards-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-container p {
+  margin-bottom: 1.5rem;
+  color: var(--light-text);
+}
+
+#join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#join-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+#join-form input[type="text"],
+#join-form input[type="email"],
+#join-form input[type="tel"],
+#join-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#join-form input:focus,
+#join-form textarea:focus {
+  border-color: var(--secondary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.2);
+}
+
+#join-form input:required:valid,
+#join-form textarea:required:valid {
+  border-left: 4px solid #28a745;
+}
+
+.membership-selection {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: var(--bg-color);
+}
+
+.membership-selection legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+  color: var(--primary-color);
+}
+
+.radio-label {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.6rem !important;
+  font-weight: normal !important;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Cartões de Níveis de Associação */
+.membership-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.level-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-left: 6px solid var(--secondary-color);
+  padding: 1.25rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.level-card h3 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.level-card .price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #28a745;
+  margin: 0;
+}
+
+.info-btn {
+  align-self: flex-start;
+  background-color: transparent;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.info-btn:hover {
+  background-color: var(--secondary-color);
+  color: #ffffff;
+}
+
+/* Animações dos Cartões */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-card {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-card:nth-child(1) { animation-delay: 0.1s; }
+.animate-card:nth-child(2) { animation-delay: 0.25s; }
+.animate-card:nth-child(3) { animation-delay: 0.4s; }
+.animate-card:nth-child(4) { animation-delay: 0.55s; }
+
+/* Modal (<dialog>) */
+.membership-dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  margin: auto;
+}
+
+.membership-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.dialog-content {
+  padding: 1.5rem;
+  background-color: var(--card-bg);
+}
+
+.dialog-content h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.dialog-content ul {
+  padding-left: 1.25rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.close-modal {
+  display: block;
+  margin-left: auto;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.close-modal:hover {
+  background-color: var(--secondary-color);
+}
+
+/* ==========================================================================
+   5. Rodapé (Footer)
+   ========================================================================== */
 footer {
   background-color: var(--primary-color);
-  color: white;
+  color: #ffffff;
   padding: 1.5rem 1rem;
   margin-top: 3rem;
   font-size: 0.9rem;
@@ -255,31 +534,33 @@ footer {
 }
 
 .social-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
 }
 
 .social-links a {
-    color: inherit;
-    display: inline-flex;
-    transition: color 0.3s ease, transform 0.2s ease;
+  color: inherit;
+  display: inline-flex;
+  transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .social-links a:hover {
-    color: #0056b3;
-    transform: translateY(-2px);
+  color: var(--accent-color);
+  transform: translateY(-2px);
 }
 
 .social-icon {
-    width: 28px;
-    height: 28px;
-    fill: currentColor;
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
 }
 
-/* Responsividade Desktop */
+/* ==========================================================================
+   6. Responsividade Desktop
+   ========================================================================== */
 @media (min-width: 768px) {
   header {
     flex-direction: row;
