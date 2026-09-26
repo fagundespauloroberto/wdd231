@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diretório de Membros - Câmara de Comércio | Paulo Fagundes</title>
-    <meta name="description" content="Diretório de empresas e membros da Câmara de Comércio local. Encontre negócios, parceiros e serviços na região.">
+    <title>Junte-se a Nós - Câmara de Comércio | Paulo Fagundes</title>
+    <meta name="description" content="Formulário de adesão para novos membros e empresas na Câmara de Comércio local.">
     <meta name="author" content="Paulo Fagundes">
 
     <link rel="icon" href="imagens/xaxim.ico" type="image/x-icon">
 
-    <meta property="og:title" content="Diretório de Membros - Câmara de Comércio">
+    <meta property="og:title" content="Junte-se a Nós - Câmara de Comércio">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
-    <meta property="og:url" content="https://fagundespauloroberto.github.io/wdd231/camara/diretorio.html">
-    <meta property="og:description" content="Conheça as empresas associadas à nossa Câmara de Comércio e impulsione seus negócios regionais.">
+    <meta property="og:url" content="https://fagundespauloroberto.github.io/wdd231/camara/associacao.html">
+    <meta property="og:description" content="Associe sua empresa à nossa Câmara de Comércio e aproveite os benefícios exclusivos.">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Diretório de Membros - Câmara de Comércio">
-    <meta name="twitter:description" content="Conheça as empresas associadas à nossa Câmara de Comércio e impulsione seus negócios regionais.">
+    <meta name="twitter:title" content="Junte-se a Nós - Câmara de Comércio">
+    <meta name="twitter:description" content="Associe sua empresa à nossa Câmara de Comércio e aproveite os benefícios exclusivos.">
     <meta name="twitter:image" content="https://fagundespauloroberto.github.io/wdd231/camara/imagens/og-share.jpg">
 
     <link rel="stylesheet" href="../estilos/normalize.css">
@@ -28,41 +28,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <script src="scripts/diretorio.js" defer></script>
-    <script src="scripts/membros.js" defer></script>
+    <script src="scripts/main.js" defer></script>
+    <script type="module" src="scripts/sobre.js"></script>
 </head>
 
 <body>
     <header>
         <div class="header-container">
-            <img src="imagens/logo.png" alt="Logo da Câmara de Comércio" class="logo">
-            <div class="header-title">
-                <h1>Câmara de Comércio</h1>
-                <p>Unindo empresas, fortalecendo a região</p>
-            </div>
+        <img src="imagens/logo.png" alt="Logo Câmara de Comércio" class="logo">
+        <div class="header-title">
+            <h1>Câmara de Comércio</h1>
+            <p>Unindo empresas, fortalecendo a região</p>
         </div>
-        <button id="hamburger-btn" aria-label="Abrir Menu de Navegação"><span>&#9776;</span><span>&times;</span></button>
-        <nav id="primary-nav">
-            <ul>
-                <li><a href="index.html">Página Inicial</a></li>
-                <li><a href="diretorio.html" class="active">Diretório</a></li>
-                <li><a href="associacao.html">Associe-se</a></li>
-                <li><a href="#">Sobre Nós</a></li>   
-                <li><a href="#">Contato</a></li>
-            </ul>
+        </div>
+        <button id="hamburger-btn" aria-label="Abrir Menu">
+        <span>&#9776;</span>
+        <span>&times;</span>
+        </button>
+        <nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="diretorio.html">Diretório</a></li>
+            <li><a href="associacao.html">Associe-se</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>   
+        </ul>
         </nav>
     </header>
 
     <main>
-        <section class="directory-header">
-            <h2>Diretório de Membros</h2>
-            <div class="view-toggle">
-                <button id="grid-view-btn" class="active-view" aria-label="Visualização em Grade">🔲 Grade</button>
-                <button id="list-view-btn" aria-label="Visualização em Lista">☰ Lista</button>
-            </div>
+        <!-- Área para Exibição da Mensagem de Visita -->
+        <div id="visit-message" class="visit-banner" role="alert"></div>
+
+        <section class="about-hero">
+        <h2>Conheça Xaxim e Nossa Região</h2>
+        <p>Localizada no Oeste Catarinense, Xaxim se destaca pelo seu forte agronegócio, vocação industrial e qualidade de vida. Explore os 8 principais pontos de interesse de nossa cidade:</p>
         </section>
 
-        <div id="members-container" class="grid-view"></div>
+        <!-- Container do Grid com Áreas Nomeadas -->
+        <section id="gallery-grid" class="attractions-grid">
+        <!-- Cartões inseridos dinamicamente via JS -->
+        </section>
     </main>
 
     <footer>
@@ -92,6 +97,6 @@
             </div>
         </div>
     </footer>
-</body>
 
+</body>
 </html>
