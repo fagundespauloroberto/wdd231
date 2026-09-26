@@ -1,22 +1,19 @@
-/****************************************************
-   1. Configurações Globais & Sistema Único de Cores
-**********************************************************/
 :root {
-  --primary-color: #1a365d;
-  --secondary-color: #2b6cb0;
-  --accent-color: #d69e2e;
-  --bg-color: #f7fafc;
+  --primary: #1a365d;
+  --secondary: #2b6cb0;
+  --accent: #d69e2e;
+  --bg: #f7fafc;
   --card-bg: #ffffff;
-  --text-color: #2d3748;
+  --text: #2d3748;
   --light-text: #718096;
-  --border-color: #e2e8f0;
-  
-  /* Cores de Níveis / Status */
-  --level-1: #4a5568;
-  --level-2: #2b6cb0;
-  --level-3: #744210;
-  --level-3-bg: #fefcbf;
-  --success-color: #28a745;
+  --border: #e2e8f0;
+  --lvl-1: #4a5568;
+  --lvl-2: #2b6cb0;
+  --lvl-3: #744210;
+  --lvl-3-bg: #fefcbf;
+  --success: #28a745;
+  --shadow: #0000001a;
+  --overlay: #00000099;
 }
 
 * {
@@ -25,10 +22,9 @@
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--bg);
+  color: var(--text);
   margin: 0;
-  padding: 0;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -43,11 +39,9 @@ main {
   flex: 1;
 }
 
-/***************************************************************
-   2. Cabeçalho & Navegação (Header & Nav)
-****************************************************/
+/* Header & Nav */
 header {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   color: var(--card-bg);
   padding: 1rem;
   display: flex;
@@ -69,20 +63,23 @@ header {
   object-fit: contain;
 }
 
-.header-title h1 {
+.header-title h1,
+.header-title p {
   margin: 0;
+}
+
+.header-title h1 {
   font-size: 1.5rem;
 }
 
 .header-title p {
-  margin: 0;
   font-size: 0.85rem;
-  color: var(--border-color);
+  color: var(--border);
 }
 
 #hamburger-btn {
-  background: none;
-  border: none;
+  background-color: #00000000;
+  border: 0;
   color: var(--card-bg);
   font-size: 2rem;
   cursor: pointer;
@@ -108,7 +105,7 @@ nav.open {
 }
 
 nav ul {
-  list-style: none;
+  list-style: #00000000;
   padding: 0;
   margin: 0;
   display: flex;
@@ -118,20 +115,18 @@ nav ul {
 nav a {
   display: block;
   color: var(--card-bg);
-  text-decoration: none;
+  text-decoration: #00000000;
   padding: 0.75rem 1rem;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #ffffff1a;
 }
 
-nav a:hover, 
+nav a:hover,
 nav a.active {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
 }
 
-/********************************************************************************
-   3. Diretório de Membros & Destaques (Grid / List Views)
-***************************************************/
+/* Header Diretório e Botões */
 .directory-header {
   display: flex;
   justify-content: space-between;
@@ -141,12 +136,17 @@ nav a.active {
   gap: 1rem;
 }
 
-.directory-header h2 {
-  margin: 0;
-  color: var(--primary-color);
+.directory-header h2,
+.form-container h2,
+.cards-container h2,
+.member-card h3,
+.level-card h3,
+.dialog-content h3,
+.attraction-card h2 {
+  color: var(--primary);
+  margin: 0 0 0.5rem;
 }
 
-/* Botões Padronizados */
 .view-toggle button,
 .info-btn,
 .submit-btn,
@@ -160,16 +160,17 @@ nav a.active {
 
 .view-toggle button {
   background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   padding: 0.5rem 1rem;
 }
 
 .view-toggle button.active-view {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   color: var(--card-bg);
-  border-color: var(--secondary-color);
+  border-color: var(--secondary);
 }
 
+/* Grids e Cartões */
 #members-container.grid-view,
 .spotlights-grid {
   display: grid;
@@ -177,29 +178,14 @@ nav a.active {
   gap: 1.5rem;
 }
 
-@media (min-width: 600px) {
-  #members-container.grid-view,
-  .spotlights-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 900px) {
-  #members-container.grid-view,
-  .spotlights-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Base de Cartões Única */
 .member-card,
 .level-card,
 .attraction-card {
   background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1.25rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px var(--shadow);
 }
 
 .member-card {
@@ -217,11 +203,6 @@ nav a.active {
   margin: 0 auto 1rem;
 }
 
-.member-card h3 {
-  margin: 0 0 0.5rem;
-  color: var(--primary-color);
-}
-
 .member-card p {
   margin: 0.25rem 0;
   font-size: 0.9rem;
@@ -237,11 +218,11 @@ nav a.active {
   text-transform: uppercase;
 }
 
-.level-1 { background-color: var(--border-color); color: var(--level-1); }
-.level-2 { background-color: var(--border-color); color: var(--level-2); border: 1px solid var(--light-text); }
-.level-3 { background-color: var(--level-3-bg); color: var(--level-3); border: 1px solid var(--accent-color); }
+.level-1 { background-color: var(--border); color: var(--lvl-1); }
+.level-2 { background-color: var(--border); color: var(--lvl-2); border: 1px solid var(--light-text); }
+.level-3 { background-color: var(--lvl-3-bg); color: var(--lvl-3); border: 1px solid var(--accent); }
 
-/* Visualização em Lista */
+/* List View */
 #members-container.list-view {
   display: flex;
   flex-direction: column;
@@ -256,30 +237,22 @@ nav a.active {
   padding: 0.75rem 1rem;
 }
 
-#members-container.list-view .member-card img { display: none; }
-#members-container.list-view .member-card h3,
-#members-container.list-view .member-card p { margin: 0; flex: 2; }
+#members-container.list-view .member-card img {
+  display: none;
+}
 
-/****************************************************
-   4. Página de Associação / Formulário (associacao.html)
-****************************************************/
+#members-container.list-view .member-card h3,
+#members-container.list-view .member-card p {
+  margin: 0;
+  flex: 2;
+}
+
+/* Formulário & Associação */
 .join-main-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   padding: 1.5rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .join-main-grid { grid-template-columns: 3fr 2fr; }
-}
-
-.form-container h2, 
-.cards-container h2 {
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
 }
 
 .form-container p {
@@ -294,7 +267,7 @@ nav a.active {
   background-color: var(--card-bg);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
 }
 
 #join-form label {
@@ -311,7 +284,7 @@ nav a.active {
 #join-form textarea {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   border-radius: 4px;
   font-size: 1rem;
   font-family: inherit;
@@ -319,30 +292,30 @@ nav a.active {
 
 #join-form input:focus,
 #join-form textarea:focus {
-  border-color: var(--secondary-color);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.2);
+  border-color: var(--secondary);
+  outline: 0;
+  box-shadow: 0 0 0 3px #2b6cb033;
 }
 
 #join-form input:required:valid,
 #join-form textarea:required:valid {
-  border-left: 4px solid var(--success-color);
+  border-left: 4px solid var(--success);
 }
 
 .membership-selection {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  background-color: var(--bg-color);
+  background-color: var(--bg);
 }
 
 .membership-selection legend {
   font-weight: bold;
   padding: 0 0.5rem;
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 .radio-label {
@@ -356,19 +329,20 @@ nav a.active {
 .radio-label input[type="radio"] {
   width: 1.1rem;
   height: 1.1rem;
-  accent-color: var(--primary-color);
+  accent-color: var(--primary);
 }
 
 .submit-btn {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   color: var(--card-bg);
   padding: 0.9rem;
-  border: none;
+  border: 0;
   font-size: 1rem;
 }
 
-.submit-btn:hover { background-color: var(--secondary-color); }
-.submit-btn:active { transform: scale(0.98); }
+.submit-btn:hover {
+  background-color: var(--secondary);
+}
 
 .membership-cards {
   display: flex;
@@ -377,35 +351,34 @@ nav a.active {
 }
 
 .level-card {
-  border-left: 6px solid var(--secondary-color);
+  border-left: 6px solid var(--secondary);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.level-card h3 { margin: 0; color: var(--primary-color); }
 .level-card .price {
   font-size: 1.1rem;
   font-weight: bold;
-  color: var(--success-color);
+  color: var(--success);
   margin: 0;
 }
 
 .info-btn {
   align-self: flex-start;
-  background: transparent;
-  border: 1px solid var(--secondary-color);
-  color: var(--secondary-color);
+  background-color: #00000000;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
   padding: 0.5rem 1rem;
   margin-top: 0.5rem;
 }
 
 .info-btn:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   color: var(--card-bg);
 }
 
-/* Animações dos Cartões */
+/* Animações e Modal */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -417,20 +390,18 @@ nav a.active {
 .animate-card:nth-child(3) { animation-delay: 0.4s; }
 .animate-card:nth-child(4) { animation-delay: 0.55s; }
 
-/* Modal (<dialog>) */
 .membership-dialog {
-  border: none;
+  border: 0;
   border-radius: 8px;
   padding: 0;
   max-width: 500px;
   width: 90%;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px var(--shadow);
   margin: auto;
 }
 
 .membership-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(3px);
+  background-color: var(--overlay);
 }
 
 .dialog-content {
@@ -439,28 +410,26 @@ nav a.active {
 }
 
 .dialog-content h3 {
-  margin-top: 0;
-  color: var(--primary-color);
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border);
   padding-bottom: 0.5rem;
 }
 
 .close-modal {
   display: block;
   margin-left: auto;
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   color: var(--card-bg);
-  border: none;
+  border: 0;
   padding: 0.5rem 1.2rem;
 }
 
-.close-modal:hover { background-color: var(--secondary-color); }
+.close-modal:hover {
+  background-color: var(--secondary);
+}
 
-/*******************************************************************
-   5. Página Sobre & Grid Template Areas
-  *************************************************** *** */
+/* Página Sobre & Grid Template Areas */
 .visit-banner {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
   color: var(--card-bg);
   padding: 0.8rem 1rem;
   border-radius: 6px;
@@ -509,17 +478,11 @@ nav a.active {
   flex-direction: column;
 }
 
-.attraction-card h2 {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  margin: 0 0 0.75rem;
-}
-
 .attraction-card figure {
   margin: 0 0 0.75rem;
   overflow: hidden;
   border-radius: 6px;
-  background-color: var(--border-color);
+  background-color: var(--border);
 }
 
 .attraction-card img {
@@ -554,11 +517,9 @@ nav a.active {
   }
 }
 
-/***************************************************
-   6. Rodapé (Footer) & Responsividade Global Desktop
-****************************************************/
+/* Rodapé e Responsivo Global */
 footer {
-  background-color: var(--primary-color);
+  background-color: var(--primary);
   color: var(--card-bg);
   padding: 1.5rem 1rem;
   margin-top: 3rem;
@@ -576,7 +537,7 @@ footer {
 
 .footer-contact h3 {
   margin-top: 0;
-  color: var(--accent-color);
+  color: var(--accent);
 }
 
 .social-links {
@@ -594,7 +555,7 @@ footer {
 }
 
 .social-links a:hover {
-  color: var(--accent-color);
+  color: var(--accent);
   transform: translateY(-2px);
 }
 
@@ -604,6 +565,13 @@ footer {
   fill: currentColor;
 }
 
+@media (min-width: 600px) {
+  #members-container.grid-view,
+  .spotlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 768px) {
   header {
     flex-direction: row;
@@ -611,7 +579,9 @@ footer {
     padding: 1rem 2rem;
   }
 
-  #hamburger-btn { display: none; }
+  #hamburger-btn {
+    display: none;
+  }
 
   nav {
     display: block;
@@ -624,13 +594,24 @@ footer {
   }
 
   nav a {
-    border-top: none;
+    border-top: 0;
     border-radius: 4px;
+  }
+
+  .join-main-grid {
+    grid-template-columns: 3fr 2fr;
   }
 
   .footer-info {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
+  }
+}
+
+@media (min-width: 900px) {
+  #members-container.grid-view,
+  .spotlights-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
