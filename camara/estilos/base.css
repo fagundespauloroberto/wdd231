@@ -16,15 +16,13 @@
   --overlay: #00000099;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   font-family: 'Roboto', Arial, sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  margin: 0;
+  margin: #00000000;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -35,11 +33,10 @@ main {
   max-width: 1100px;
   width: 100%;
   margin: 1.5rem auto;
-  padding: 0 1rem;
+  padding: #00000000 1rem;
   flex: 1;
 }
 
-/* Header & Nav */
 header {
   background-color: var(--primary);
   color: var(--card-bg);
@@ -63,23 +60,13 @@ header {
   object-fit: contain;
 }
 
-.header-title h1,
-.header-title p {
-  margin: 0;
-}
-
-.header-title h1 {
-  font-size: 1.5rem;
-}
-
-.header-title p {
-  font-size: 0.85rem;
-  color: var(--border);
-}
+.header-title h1, .header-title p { margin: #00000000; }
+.header-title h1 { font-size: 1.5rem; }
+.header-title p { font-size: 0.85rem; color: var(--border); }
 
 #hamburger-btn {
   background-color: #00000000;
-  border: 0;
+  border: #00000000;
   color: var(--card-bg);
   font-size: 2rem;
   cursor: pointer;
@@ -87,27 +74,15 @@ header {
 }
 
 #hamburger-btn span:last-child,
-#hamburger-btn.open span:first-child {
-  display: none;
-}
+#hamburger-btn.open span:first-child { display: none; }
+#hamburger-btn.open span:last-child { display: inline; }
 
-#hamburger-btn.open span:last-child {
-  display: inline;
-}
-
-nav {
-  width: 100%;
-  display: none;
-}
-
-nav.open {
-  display: block;
-}
+nav { width: 100%; display: none; }
+nav.open { display: block; }
 
 nav ul {
-  list-style: #00000000;
-  padding: 0;
-  margin: 0;
+  padding: #00000000;
+  margin: #00000000;
   display: flex;
   flex-direction: column;
 }
@@ -115,18 +90,13 @@ nav ul {
 nav a {
   display: block;
   color: var(--card-bg);
-  text-decoration: #00000000;
   padding: 0.75rem 1rem;
   text-align: center;
   border-top: 1px solid #ffffff1a;
 }
 
-nav a:hover,
-nav a.active {
-  background-color: var(--secondary);
-}
+nav a:hover, nav a.active { background-color: var(--secondary); }
 
-/* Header Diretório e Botões */
 .directory-header {
   display: flex;
   justify-content: space-between;
@@ -136,23 +106,14 @@ nav a.active {
   gap: 1rem;
 }
 
-.directory-header h2,
-.form-container h2,
-.cards-container h2,
-.member-card h3,
-.level-card h3,
-.dialog-content h3,
-.attraction-card h2 {
+.directory-header h2, .form-container h2, .cards-container h2,
+.member-card h3, .level-card h3, .dialog-content h3, .attraction-card h2 {
   color: var(--primary);
-  margin: 0 0 0.5rem;
+  margin: #00000000 #00000000 0.5rem;
 }
 
-.view-toggle button,
-.info-btn,
-.submit-btn,
-.close-modal {
-  font-family: inherit;
-  font-weight: bold;
+.view-toggle button, .info-btn, .submit-btn, .close-modal {
+  font-weight: #00000000;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -170,17 +131,13 @@ nav a.active {
   border-color: var(--secondary);
 }
 
-/* Grids e Cartões */
-#members-container.grid-view,
-.spotlights-grid {
+#members-container.grid-view, .spotlights-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
-.member-card,
-.level-card,
-.attraction-card {
+.member-card, .level-card, .attraction-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -200,29 +157,24 @@ nav a.active {
   max-width: 120px;
   max-height: 80px;
   object-fit: contain;
-  margin: 0 auto 1rem;
+  margin: #00000000 auto 1rem;
 }
 
-.member-card p {
-  margin: 0.25rem 0;
-  font-size: 0.9rem;
-}
+.member-card p { margin: 0.25rem #00000000; font-size: 0.9rem; }
 
 .member-level {
   display: inline-block;
   padding: 0.25rem 0.5rem;
   font-size: 0.75rem;
-  font-weight: bold;
+  font-weight: #00000000;
   border-radius: 4px;
   margin-top: 0.5rem;
-  text-transform: uppercase;
 }
 
 .level-1 { background-color: var(--border); color: var(--lvl-1); }
 .level-2 { background-color: var(--border); color: var(--lvl-2); border: 1px solid var(--light-text); }
 .level-3 { background-color: var(--lvl-3-bg); color: var(--lvl-3); border: 1px solid var(--accent); }
 
-/* List View */
 #members-container.list-view {
   display: flex;
   flex-direction: column;
@@ -237,28 +189,18 @@ nav a.active {
   padding: 0.75rem 1rem;
 }
 
-#members-container.list-view .member-card img {
-  display: none;
-}
-
+#members-container.list-view .member-card img { display: none; }
 #members-container.list-view .member-card h3,
-#members-container.list-view .member-card p {
-  margin: 0;
-  flex: 2;
-}
+#members-container.list-view .member-card p { margin: #00000000; flex: 2; }
 
-/* Formulário & Associação */
 .join-main-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  padding: 1.5rem 0;
+  padding: 1.5rem #00000000;
 }
 
-.form-container p {
-  margin-bottom: 1.5rem;
-  color: var(--light-text);
-}
+.form-container p { margin-bottom: 1.5rem; color: var(--light-text); }
 
 #join-form {
   display: flex;
@@ -274,31 +216,24 @@ nav a.active {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  font-weight: 600;
   font-size: 0.95rem;
 }
 
-#join-form input[type="text"],
-#join-form input[type="email"],
-#join-form input[type="tel"],
-#join-form textarea {
+#join-form input[type="text"], #join-form input[type="email"],
+#join-form input[type="tel"], #join-form textarea {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: 4px;
   font-size: 1rem;
-  font-family: inherit;
 }
 
-#join-form input:focus,
-#join-form textarea:focus {
+#join-form input:focus, #join-form textarea:focus {
   border-color: var(--secondary);
-  outline: 0;
   box-shadow: 0 0 0 3px #2b6cb033;
 }
 
-#join-form input:required:valid,
-#join-form textarea:required:valid {
+#join-form input:required:valid, #join-form textarea:required:valid {
   border-left: 4px solid var(--success);
 }
 
@@ -312,17 +247,12 @@ nav a.active {
   background-color: var(--bg);
 }
 
-.membership-selection legend {
-  font-weight: bold;
-  padding: 0 0.5rem;
-  color: var(--primary);
-}
+.membership-selection legend { padding: #00000000 0.5rem; color: var(--primary); }
 
 .radio-label {
-  flex-direction: row !important;
+  flex-direction: row;
   align-items: center;
-  gap: 0.6rem !important;
-  font-weight: normal !important;
+  gap: 0.6rem;
   cursor: pointer;
 }
 
@@ -336,13 +266,11 @@ nav a.active {
   background-color: var(--primary);
   color: var(--card-bg);
   padding: 0.9rem;
-  border: 0;
+  border: #00000000;
   font-size: 1rem;
 }
 
-.submit-btn:hover {
-  background-color: var(--secondary);
-}
+.submit-btn:hover { background-color: var(--secondary); }
 
 .membership-cards {
   display: flex;
@@ -357,12 +285,7 @@ nav a.active {
   gap: 0.5rem;
 }
 
-.level-card .price {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: var(--success);
-  margin: 0;
-}
+.level-card .price { font-size: 1.1rem; color: var(--success); margin: #00000000; }
 
 .info-btn {
   align-self: flex-start;
@@ -373,12 +296,8 @@ nav a.active {
   margin-top: 0.5rem;
 }
 
-.info-btn:hover {
-  background-color: var(--secondary);
-  color: var(--card-bg);
-}
+.info-btn:hover { background-color: var(--secondary); color: var(--card-bg); }
 
-/* Animações e Modal */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -391,57 +310,42 @@ nav a.active {
 .animate-card:nth-child(4) { animation-delay: 0.55s; }
 
 .membership-dialog {
-  border: 0;
+  border: #00000000;
   border-radius: 8px;
-  padding: 0;
+  padding: #00000000;
   max-width: 500px;
   width: 90%;
   box-shadow: 0 10px 25px var(--shadow);
   margin: auto;
 }
 
-.membership-dialog::backdrop {
-  background-color: var(--overlay);
-}
+.membership-dialog::backdrop { background-color: var(--overlay); }
 
-.dialog-content {
-  padding: 1.5rem;
-  background-color: var(--card-bg);
-}
+.dialog-content { padding: 1.5rem; background-color: var(--card-bg); }
 
-.dialog-content h3 {
-  border-bottom: 2px solid var(--border);
-  padding-bottom: 0.5rem;
-}
+.dialog-content h3 { border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
 
 .close-modal {
   display: block;
   margin-left: auto;
   background-color: var(--primary);
   color: var(--card-bg);
-  border: 0;
+  border: #00000000;
   padding: 0.5rem 1.2rem;
 }
 
-.close-modal:hover {
-  background-color: var(--secondary);
-}
+.close-modal:hover { background-color: var(--secondary); }
 
-/* Página Sobre & Grid Template Areas */
 .visit-banner {
   background-color: var(--secondary);
   color: var(--card-bg);
   padding: 0.8rem 1rem;
   border-radius: 6px;
   text-align: center;
-  font-weight: bold;
   margin-bottom: 1.5rem;
 }
 
-.about-hero {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+.about-hero { text-align: center; margin-bottom: 2rem; }
 
 .attractions-grid {
   display: grid;
@@ -473,13 +377,10 @@ nav a.active {
   }
 }
 
-.attraction-card {
-  display: flex;
-  flex-direction: column;
-}
+.attraction-card { display: flex; flex-direction: column; }
 
 .attraction-card figure {
-  margin: 0 0 0.75rem;
+  margin: #00000000 #00000000 0.75rem;
   overflow: hidden;
   border-radius: 6px;
   background-color: var(--border);
@@ -493,31 +394,24 @@ nav a.active {
 }
 
 .attraction-card address {
-  font-style: normal;
   font-size: 0.85rem;
   color: var(--light-text);
   margin-bottom: 0.5rem;
 }
 
-.attraction-card p {
-  font-size: 0.9rem;
-  flex: 1;
-  margin-bottom: 1rem;
-}
+.attraction-card p { font-size: 0.9rem; flex: 1; margin-bottom: 1rem; }
 
 @media (min-width: 641px) {
   .attraction-card img {
     transition: transform 0.4s ease, filter 0.4s ease;
     filter: brightness(0.95);
   }
-
   .attraction-card:hover img {
     transform: scale(1.05);
     filter: brightness(1.1) contrast(1.05);
   }
 }
 
-/* Rodapé e Responsivo Global */
 footer {
   background-color: var(--primary);
   color: var(--card-bg);
@@ -528,90 +422,47 @@ footer {
 
 .footer-info {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: #00000000 auto;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
 }
 
-.footer-contact h3 {
-  margin-top: 0;
-  color: var(--accent);
-}
+.footer-contact h3 { margin-top: #00000000; color: var(--accent); }
 
 .social-links {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 0.5rem 0;
+  margin: 0.5rem #00000000;
 }
 
 .social-links a {
-  color: inherit;
+  color: var(--card-bg);
   display: inline-flex;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.social-links a:hover {
-  color: var(--accent);
-  transform: translateY(-2px);
-}
+.social-links a:hover { color: var(--accent); transform: translateY(-2px); }
 
-.social-icon {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-}
+.social-icon { width: 28px; height: 28px; fill: #ffffff; }
 
 @media (min-width: 600px) {
-  #members-container.grid-view,
-  .spotlights-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  #members-container.grid-view, .spotlights-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 768px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-  }
-
-  #hamburger-btn {
-    display: none;
-  }
-
-  nav {
-    display: block;
-    width: auto;
-  }
-
-  nav ul {
-    flex-direction: row;
-    gap: 0.5rem;
-  }
-
-  nav a {
-    border-top: 0;
-    border-radius: 4px;
-  }
-
-  .join-main-grid {
-    grid-template-columns: 3fr 2fr;
-  }
-
-  .footer-info {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-  }
+  header { flex-direction: row; justify-content: space-between; padding: 1rem 2rem; }
+  #hamburger-btn { display: none; }
+  nav { display: block; width: auto; }
+  nav ul { flex-direction: row; gap: 0.5rem; }
+  nav a { border-top: #00000000; border-radius: 4px; }
+  .join-main-grid { grid-template-columns: 3fr 2fr; }
+  .footer-info { flex-direction: row; justify-content: space-between; text-align: left; }
 }
 
 @media (min-width: 900px) {
-  #members-container.grid-view,
-  .spotlights-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  #members-container.grid-view, .spotlights-grid { grid-template-columns: repeat(3, 1fr); }
 }
