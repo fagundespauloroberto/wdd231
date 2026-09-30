@@ -1,0 +1,162 @@
+/* Importação e reset das variáveis do esquema de cores selecionado */
+:root {
+    --primary-color: #0D9488;
+    --secondary-color: #F97316;
+    --bg-color: #F8FAFC;
+    --text-color: #1E293B;
+    --card-bg: #FFFFFF;
+    --border-color: #E2E8F0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+header h1, header h2, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.plan-section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.plan-section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+ul {
+    margin-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Amostra da Paleta de Cores */
+.color-palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.color-box {
+    padding: 1.5rem;
+    border-radius: 6px;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    border: 1px solid #CBD5E1;
+}
+
+.color-box.primary { background-color: #0D9488; }
+.color-box.secondary { background-color: #F97316; }
+.color-box.bg-light { background-color: #F8FAFC; color: #1E293B; }
+.color-box.text-dark { background-color: #1E293B; }
+
+/* Amostra da Tipografia */
+.typography-demo {
+    background-color: var(--bg-color);
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.font-heading-sample {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.font-body-sample {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+}
+
+/* Galeria dos Wireframes */
+.wireframe-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 650px) {
+    .wireframe-gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+figure {
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    padding: 0.8rem;
+    border-radius: 6px;
+}
+
+figure img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
