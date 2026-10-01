@@ -1,4 +1,4 @@
-import { atracoes } from '../dados/atracao.mjs';
+import { atracoes } from '../dados/atracoes.mjs';
 
 document.addEventListener('DOMContentLoaded', () => {
     handleVisitCounter();
@@ -29,11 +29,10 @@ function handleVisitCounter() {
         }
     }
 
-    // Atualiza a data da última visita para o acesso atual
     localStorage.setItem('lastVisitTimestamp', now.toString());
 }
 
-/* 2. Renderização dos Cartões Dinâmicos */
+/* 2. Renderização dos Cartões Dinâmicos (CORRIGIDA) */
 function renderAttractions() {
     const galleryContainer = document.getElementById('gallery-grid');
     if (!galleryContainer) return;
@@ -42,17 +41,16 @@ function renderAttractions() {
 
     atracoes.forEach(item => {
         const card = document.createElement('article');
-        card.className = 'attraction-card';
-        card.style.gridArea = item.id; // Vincula cada cartão à sua área de grade nomeada
+        card.className = 'attraction-card animate-card';
+        card.style.gridArea = item.id;
 
         card.innerHTML = `
-            <h2>${item.nome}</h2>
+            <h2>${item.name}</h2>
             <figure>
-                <img src="imagens/${item.imagem}" alt="${item.nome}" width="300" height="200" loading="lazy">
+                <img src="${item.image}" alt="${item.alt}" width="400" height="200" loading="lazy">
             </figure>
-            <address>${item.endereco}</address>
-            <p>${item.descricao}</p>
-            <button class="info-btn" type="button">Saiba mais</button>
+            <address>${item.address}</address>
+            <p>${item.description}</p>
         `;
 
         galleryContainer.appendChild(card);
