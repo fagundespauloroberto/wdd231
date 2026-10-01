@@ -43,12 +43,9 @@
 <body>
     <header>
         <div class="header-brand">
-            <!-- Logotipo do site em arquivo SVG -->
-            <img src="imagens/logo.svg" alt="Logotipo do Site" class="logo">
+            <img src="imagens/logo.png" alt="Logotipo do Site" class="logo">
             <span>Paulo Fagundes</span>
         </div>
-        
-        <!-- Ícone Hambúrguer para Telas Pequenas -->
         <button id="hamburger-btn" aria-label="Abrir Menu de Navegação">
             <span class="icon">☰</span>
         </button>
@@ -56,8 +53,8 @@
         <nav id="primary-nav">
             <ul>
                 <li><a href="index.html" class="active">Página Inicial</a></li>
-                <li><a href="camara/diretorio.html">Projeto Câmara</a></li>
-                <li><a href="#">Projeto Final</a></li>
+                <li><a href="camara/index.html">Projeto Câmara</a></li>
+                <li><a href="projetofinal/projetofinal.html">Projeto Final</a></li>
             </ul>
         </nav>
     </header>
@@ -75,7 +72,6 @@
                 </div>
             </section>
 
-            <!-- Seção 2: Foto/Localização -->
             <section class="card">
                 <h2>Foto</h2>
                 <div class="card-content image-box">
@@ -83,7 +79,6 @@
                 </div>
             </section>
 
-            <!-- Seção 3: Certificados de Cursos -->
             <section class="card full-width">
                 <h2>Cursos de Certificação Web</h2>
                 
@@ -92,11 +87,7 @@
                     <button id="btn-wdd" class="btn-filter">WDD</button>
                     <button id="btn-cse" class="btn-filter">CSE</button>
                 </div>
-
-                <!-- Grade para cartões de cursos dinamizados via JS -->
                 <div id="course-container" class="course-grid"></div>
-
-                <!-- Exibição dinâmica da soma dos créditos com reduce -->
                 <p class="credits-display">
                     O total de créditos necessários para os cursos exibidos é: <strong id="total-credits">0</strong>
                 </p>
