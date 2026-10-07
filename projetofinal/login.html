@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patinhas Conectadas 🐾 — Entrar ou Criar Conta</title>
+    
+    <link rel="stylesheet" href="estilos/login.css">
+    
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="scripts/login.js" defer></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Patinhas Conectadas 🐾</a>
+        </div>
+    </header>
+
+    <main class="container auth-container">
+        <div class="card-form">
+            <h2 id="tituloForm">Acessar Área do Doador</h2>
+            <p id="subtituloForm" class="auth-subtitle">
+                Entre com seus dados para gerenciar cadastros de pets.
+            </p>
+
+            <form id="formAuth">
+                <!-- Campos Exclusivos do Cadastro (Escondidos por padrão no Login) -->
+                <div class="form-group campo-cadastro" id="grupoNome" style="display: none;">
+                    <label for="nomeDoador">Nome Completo ou Nome da ONG *</label>
+                    <input type="text" id="nomeDoador" placeholder="Ex: ONG Patas de Luz">
+                </div>
+
+                <div class="form-group campo-cadastro" id="grupoWhatsapp" style="display: none;">
+                    <label for="whatsapp">WhatsApp / Telefone *</label>
+                    <input type="tel" id="whatsapp" placeholder="(49) 99999-9999">
+                </div>
+
+                <div class="form-group campo-cadastro" id="grupoLocalizacao" style="display: none;">
+                    <label for="localizacao">Cidade / UF *</label>
+                    <input type="text" id="localizacao" placeholder="Ex: Xaxim - SC">
+                </div>
+
+                <!-- Campos Comuns (Login e Cadastro) -->
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" required placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="senha">Senha *</label>
+                    <input type="password" id="senha" required placeholder="******">
+                </div>             
+
+                <button type="submit" id="btnSubmit" class="btn btn-primary btn-full">
+                    Entrar
+                </button>
+            </form>
+
+            <div class="auth-toggle">
+                <p id="textoAlternar">
+                    Ainda não tem conta? <a href="#" id="linkAlternar">Cadastre-se aqui</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

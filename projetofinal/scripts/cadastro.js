@@ -1,0 +1,208 @@
+//********************************* */
+// CONFIGURAÇÃO DO CLIENTE SUPABASE
+//********************************* */
+const SUPABASE_URL = 'https://wasodctryfmajucxsqed.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhc29kY3RyeWZtYWp1Y3hzcWVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3MTMyOTEsImV4cCI6MjEwMDI4OTI5MX0.5hQepY49znD3ENz1eGPaFSa9n2Or0PBng5VMuvini7o';
+
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let usuarioLogado = null;
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Verificar se o usuário está logado
+    const { data: { session } } = await _supabase.auth.getSession();
+
+    if (!session) {
+        alert('Você precisa estar logado para cadastrar um pet para doação.');
+        window.location.href = 'login.html';
+        return;
+    }
+
+    usuarioLogado = session.user;
+    const metadata = usuarioLogado.user_metadata || {};
+
+    const nomeDoador = metadata.nome_doador || usuarioLogado.email;
+    const whatsappDoador = metadata.whatsapp || 'Não informado';
+    //const localizacaoDoador = metadata.localizacao || 'Não informada';
+    const tipoDoador = metadata.tipo || 'Doador Particular';
+    const emailDoador = usuarioLogado.email;
+
+    //exibir dados do usuário no menu e na interface
+    const userEmailNav = document.getElementById('userEmailNav');
+    if (userEmailNav) userEmailNav.textContent = emailDoador;
+
+    const elDoador = document.getElementById('nomeDoadorLogado');
+    if (elDoador) elDoador.textContent = nomeDoador;
+
+    // 2. Lógica do Botão Sair (Logout)
+    const btnSair = document.getElementById('btnSair');
+    if (btnSair) {
+        btnSair.addEventListener('click', async () => {
+            const confirmou = confirm('Deseja realmente encerrar a sessão?');
+            if (confirmou) {
+                const { error } = await _supabase.auth.signOut();
+                if (error) {
+                    alert('Erro ao sair: ' + error.message);
+                } else {
+                    window.location.href = 'login.html';
+                }
+            }
+        });
+    }
+
+    //********************************************************* */
+    //Garantir/Sincronizar perfil completo na tabela 'profiles'
+    try {
+        const { error: profileError } = await _supabase.from('profiles').upsert({
+            id: usuarioLogado.id,
+            nome: nomeDoador,
+            email: emailDoador,
+            whatsapp: whatsappDoador,
+            localizacao: localizacaoDoador,
+            tipo: tipoDoador
+        }, { onConflict: 'id' });
+
+        if (profileError) {
+            console.warn('Aviso ao sincronizar perfil:', profileError.message);
+        }
+    } catch (errPerfil) {
+        console.error('Erro ao salvar dados em profiles:', errPerfil);
+    }
+
+    //*************************************************** */
+    // Manipular o envio do formulário de cadastro do pet
+    const formAnimal = document.getElementById('formAnimal');
+    if (formAnimal) {
+        formAnimal.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = formAnimal.querySelector('button[type="submit"]');
+            const fotoInput = document.getElementById('animalFoto');
+
+            if (!fotoInput.files || fotoInput.files.length === 0) {
+                alert('Por favor, selecione uma foto do pet.');
+                return;
+            }
+
+            try {
+                // Bloqueia o botão para evitar envio duplo
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Otimizando imagem e cadastrando...';
+                }
+
+                //******************************************** */
+                // COMPACTAÇÃO E CONVERSÃO DA IMAGEM PARA WEBP
+                //********************************************** */
+                const file = fotoInput.files[0];
+                
+                // Converte a imagem para WebP com tamanho máximo de 1080px e 80% de qualidade
+                const blobWebP = await compactarEConverterParaWebP(file, 1080, 0.8);
+
+                const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 7)}.webp`;
+                const filePath = `pets/${fileName}`;
+
+                // Upload do Blob WebP no Storage do Supabase
+                const { error: uploadError } = await _supabase.storage
+                    .from('fotos-animais')
+                    .upload(filePath, blobWebP, {
+                        contentType: 'image/webp',
+                        cacheControl: '3600',
+                        upsert: false
+                    });
+
+                if (uploadError) throw uploadError;
+
+                const { data: urlData } = _supabase.storage
+                    .from('fotos-animais')
+                    .getPublicUrl(filePath);
+
+                // Preparar objeto do animal
+                const novoAnimal = {
+                    doador_id: usuarioLogado.id, 
+                    nome: document.getElementById('animalNome').value.trim(),
+                    especie: document.getElementById('animalEspecie').value,
+                    porte: document.getElementById('animalPorte').value,
+                    idade: document.getElementById('animalIdade').value.trim(),
+                    status: document.getElementById('animalStatus').value,
+                    url_foto: urlData.publicUrl,
+                    descricao: document.getElementById('animalDescricao').value.trim()
+                };
+
+                const { error: dbError } = await _supabase
+                    .from('animais')
+                    .insert([novoAnimal]);
+
+                if (dbError) throw dbError;
+
+                alert('🐾 Pet cadastrado para doação com sucesso!');
+                formAnimal.reset();
+
+            } catch (err) {
+                console.error('Erro no cadastro:', err);
+                alert('Erro ao cadastrar pet: ' + err.message);
+            } finally {
+                // Reabilita o botão
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Cadastrar Pet para Doação';
+                }
+            }
+        });
+    }
+});
+
+//******************************* */
+//COMPACTA E CONVERTE PARA WEBP
+//****************************** */
+function compactarEConverterParaWebP(arquivoOriginal, maxDimensao = 1080, qualidade = 0.8) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const img = new Image();
+            img.onload = () => {
+                let largura = img.width;
+                let altura = img.height;
+
+                // Redimensiona mantendo a proporção (aspect ratio)
+                if (largura > maxDimensao || altura > maxDimensao) {
+                    if (largura > altura) {
+                        altura = Math.round((altura * maxDimensao) / largura);
+                        largura = maxDimensao;
+                    } else {
+                        largura = Math.round((largura * maxDimensao) / altura);
+                        altura = maxDimensao;
+                    }
+                }
+
+                // Renderiza a imagem no Canvas com as novas dimensões
+                const canvas = document.createElement('canvas');
+                canvas.width = largura;
+                canvas.height = altura;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, largura, altura);
+
+                // Converte a área do Canvas para um Blob WebP
+                canvas.toBlob(
+                    (blob) => {
+                        if (blob) {
+                            resolve(blob);
+                        } else {
+                            reject(new Error('Falha ao processar a conversão da imagem para WebP.'));
+                        }
+                    },
+                    'image/webp',
+                    qualidade
+                );
+            };
+
+            img.onerror = () => reject(new Error('Não foi possível carregar a imagem selecionada.'));
+            img.src = e.target.result;
+        };
+
+        reader.onerror = () => reject(new Error('Erro ao ler arquivo do computador/celular.'));
+        reader.readAsDataURL(arquivoOriginal);
+    });
+}

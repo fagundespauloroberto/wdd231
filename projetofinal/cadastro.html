@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patinhas Conectadas — Cadastrar Pet para Adoção</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="estilos/cadastro.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="scripts/cadastro.js" defer></script>
+</head>
+<body>
+
+    <!-- NAvBar dos MEU PETs -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Patinhas Conectadas 🐾</a>
+            <nav class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="cadastro.html" class="active">Cadastrar Pet</a>
+                <a href="meus-pets.html">Meus Pets 🐾</a>
+                <span id="userEmailNav" style="font-size: 0.85rem; color: #2213aa; font-weight: 600;"></span>
+                <button id="btnSair" class="btn btn-secondary" style="margin-left: 0.5rem; padding: 0.4rem 0.8rem;">Sair</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="max-width: 600px; margin-top: 2rem; margin-bottom: 3rem;">
+        <div class="card-form">
+            <h2>Cadastrar Novo Pet</h2>
+            
+            <!-- Caixa indicando quem é o doador logado -->
+            <div class="info-doador-logado" style="background: #e2e8f0; padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <p style="margin: 0; font-size: 0.9rem; color: #334155;">
+                    👤 <strong>Doador Responsável:</strong> <span id="nomeDoadorLogado">Verificando login...</span>
+                </p>
+            </div>
+
+            <form id="formAnimal">
+                <div class="form-group">
+                    <label for="animalNome">Nome do Pet *</label>
+                    <input type="text" id="animalNome" required placeholder="Ex: Rex, Thor, Miau">
+                </div>
+
+                <div class="form-group">
+                    <label for="animalEspecie">Espécie *</label>
+                    <select id="animalEspecie" required>
+                        <option value="">Selecione...</option>
+                        <option value="Cão">Cão</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Roedor">Roedores</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="animalPorte">Porte *</label>
+                    <select id="animalPorte" required>
+                        <option value="">Selecione...</option>
+                        <option value="Pequeno">Pequeno</option>
+                        <option value="Médio">Médio</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="animalIdade">Idade Aproximada *</label>
+                    <input type="text" id="animalIdade" required placeholder="Ex: 2 meses, 1 ano, idoso">
+                </div>
+
+                <div class="form-group">
+                    <label for="animalStatus">Status de Adoção *</label>
+                    <select id="animalStatus" required>
+                        <option value="Disponível">Disponível</option>
+                        <option value="Em Processo">Em Processo</option>
+                        <option value="Adotado">Adotado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="animalFoto">Foto do Pet *</label>
+                    <input type="file" id="animalFoto" accept="image/*" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="animalDescricao">História / Descrição *</label>
+                    <textarea id="animalDescricao" rows="4" required placeholder="Conte um pouco sobre o comportamento do pet, vacinas, se é castrado, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Cadastrar Pet</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
