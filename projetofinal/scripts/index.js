@@ -1,5 +1,3 @@
-// scripts/index.js
-
 const SUPABASE_URL = 'https://wasodctryfmajucxsqed.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indhc29kY3RyeWZtYWp1Y3hzcWVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3MTMyOTEsImV4cCI6MjEwMDI4OTI5MX0.5hQepY49znD3ENz1eGPaFSa9n2Or0PBng5VMuvini7o';
 
@@ -14,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // em seguida carregamos os pets... 
     carregarAnimais();
 
-    // Evento de submissão do formulário de busca/filtro
+    //evento de submissão do formulário de busca/filtro
     const searchForm = document.querySelector('.search-bar');
     if (searchForm) {
         searchForm.addEventListener('submit', (e) => {

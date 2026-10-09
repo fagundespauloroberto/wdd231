@@ -32,7 +32,7 @@ body {
     line-height: 1.6;
 }
 
-.container {
+.site-container {
     max-width: 1140px;
     margin: 0 auto;
     padding: 0 1.5rem;
@@ -61,22 +61,22 @@ a {
     text-align: center;
 }
 
-.btn-primary {
+.btn-buscar {
     background-color: var(--accent-color);
     color: #ffffff;
 }
 
-.btn-primary:hover {
+.btn-buscar:hover {
     background-color: var(--accent-hover);
 }
 
-.btn-secondary {
+.btn-area-ong {
     background-color: transparent;
     color: #ffffff;
     border: 1.5px solid #ffffff;
 }
 
-.btn-secondary:hover {
+.btn-area-ong:hover {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -216,7 +216,7 @@ a {
     margin: 0 auto;
 }
 
-.form-group {
+.filtro-campo {
     flex: 1;
     min-width: 180px;
     display: flex;
@@ -224,15 +224,15 @@ a {
     text-align: left;
 }
 
-.form-group label {
+.filtro-campo label {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 0.3rem;
 }
 
-.form-group select,
-.form-group input {
+.filtro-campo select,
+.filtro-campo input {
     padding: 0.65rem;
     border: 1px solid var(--border-color);
     border-radius: 6px;
@@ -458,7 +458,7 @@ footer {
         flex-direction: column;
     }
 
-    .form-group, .search-bar .btn {
+    .filtro-campo, .search-bar .btn {
         width: 100%;
     }
 }
